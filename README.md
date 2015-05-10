@@ -18,7 +18,7 @@ devtools::install_github("dirkschumacher/transduceR")
 # Examples
 
 ## Transduce 
-Take the sum of the first 10 even numbers but it does not iterate through the full list < 0.2 sec on my old mac.
+Takes the sum of the first 10 even numbers but it does not iterate through the full list < 0.2 sec on my old mac.
 
 ```R 
 transducer <- compose(filter(function(x) x %% 2 == 0), take(10))
