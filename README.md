@@ -5,7 +5,7 @@ A small package that implements Clojure's [transducers](http://blog.cognitect.co
 
 Transducers let you define functions like map and filter decoupled from the underlying list datastructure. 
 
-This package is currently in a pre-alpha state (very limited documentation and tests) and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
+This package is currently in a pre-alpha state (very limited documentation and tests; R CMD CHECK fails) and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
 # Installation
 
