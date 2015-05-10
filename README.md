@@ -18,8 +18,7 @@ devtools::install_github("dirkschumacher/transduceR")
 # Examples
 
 ## Transduce 
-Take the sum of the first 10 even numbers. Does not process the rest of the list.
-Transduce behaves almost like Reduce. However it also takes a transducer.
+Take the sum of the first 10 even numbers but it does iterates through the full list.
 
 ```R 
 transducer <- compose(filter(function(x) x %% 2 == 0), take(10))
@@ -27,10 +26,10 @@ col <- 1:100000000
 system.time(transduce(transducer, plus, col))
 ```
 
-The same as a sum.
+Compute the same but as a list.
 
 ```R 
-system.time(transduce(transducer, sum, col))
+system.time(transduce(transducer, as_list, col))
 ```
 
 ## Lazy sequences 
