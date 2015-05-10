@@ -1,10 +1,19 @@
 # transduceR
+[![Build Status](https://travis-ci.org/dirkschumacher/transduceR.png?branch=master)](https://travis-ci.org/dirkschumacher/transduceR)
 
-A small package that implements Clojure's [transducers](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming) in R. It also contains lazy sequences to work with infinite collection of items. I mainly implemented it as an exercise but it might make sense to create a package out of it.
+A small package that implements Clojure's [transducers](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming) in R. It also contains lazy sequences to work with infinite collection of items. 
 
-Transducers let you define functions like map and filter decoupled from the underlying list datastructure. If this is really usefl in R, I don´t quite know yet.
+Transducers let you define functions like map and filter decoupled from the underlying list datastructure. 
 
-This package is currently in a pre-alpha state (very limited documentation and tests) and feedback is very welcome. Also the public API is far from ready and probably not optimal.
+This package is currently in a pre-alpha state (very limited documentation and tests) and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
+
+# Installation
+
+To install the current development version use devtools:
+
+```R 
+devtools::install_github("dirkschumacher/transduceR")
+```
 
 # Examples
 
