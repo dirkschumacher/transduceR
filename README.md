@@ -1,5 +1,6 @@
 # transduceR
 [![Build Status](https://travis-ci.org/dirkschumacher/transduceR.png?branch=master)](https://travis-ci.org/dirkschumacher/transduceR)
+[![Coverage Status](https://coveralls.io/repos/dirkschumacher/transduceR/badge.svg)](https://coveralls.io/r/dirkschumacher/transduceR)
 
 A small package that implements Clojure's [transducers](http://clojure.org/transducers) in R. It also contains lazy sequences to work with infinite collection of items. 
 
