@@ -6,6 +6,9 @@
 \usage{
 to_list(sequence)
 }
+\arguments{
+\item{sequence}{a sequence}
+}
 \description{
 Converts a collection to a list
 }

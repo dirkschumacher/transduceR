@@ -6,6 +6,9 @@
 \usage{
 \method{next_value}{list}(sequence)
 }
+\arguments{
+\item{sequence}{a collection}
+}
 \description{
 I.e. the second value.
 }

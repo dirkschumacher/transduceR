@@ -47,6 +47,8 @@ reduce_sequence_eager <- function(f, init, collection) {
 #' 
 #' @param transducer a transducer.
 #' @param step an step function.
+#' @param collection a collection or a sequence.
+#' @param init an initial value. If ommitted the step function will be called to generate a value without an argument.
 #' @return The result of the reduction piped through the transducer.
 #'
 #' @export

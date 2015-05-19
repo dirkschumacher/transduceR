@@ -6,6 +6,9 @@
 \usage{
 \method{next_value}{transducer_sequence}(sequence)
 }
+\arguments{
+\item{sequence}{a sequence}
+}
 \description{
 returns the next value of a lazy sequence
 }

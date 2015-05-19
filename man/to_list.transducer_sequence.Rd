@@ -6,6 +6,9 @@
 \usage{
 \method{to_list}{transducer_sequence}(sequence)
 }
+\arguments{
+\item{sequence}{a list}
+}
 \description{
 Converts a lazy sequence to a list
 }

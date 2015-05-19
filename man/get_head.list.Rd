@@ -6,6 +6,9 @@
 \usage{
 \method{get_head}{list}(sequence)
 }
+\arguments{
+\item{sequence}{a list}
+}
 \description{
 Returns the first element of a list
 }

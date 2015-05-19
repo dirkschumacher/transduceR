@@ -6,6 +6,9 @@
 \usage{
 \method{rest}{transducer_sequence}(sequence)
 }
+\arguments{
+\item{sequence}{a collection}
+}
 \description{
 Returns the rest of a lazy sequence.
 }

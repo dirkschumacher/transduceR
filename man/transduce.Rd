@@ -10,6 +10,10 @@ transduce(transducer, step, collection, init = NULL)
 \item{transducer}{a transducer.}
 
 \item{step}{an step function.}
+
+\item{collection}{a collection or a sequence.}
+
+\item{init}{an initial value. If ommitted the step function will be called to generate a value without an argument.}
 }
 \value{
 The result of the reduction piped through the transducer.

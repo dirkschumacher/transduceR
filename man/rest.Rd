@@ -6,8 +6,13 @@
 \usage{
 rest(sequence)
 }
-\description{
+\arguments{
+\item{sequence}{a collection
+
 That is everything except for the first item.
-Returns NULL if no more items exist.
+Returns NULL if no more items exist.}
+}
+\description{
+Returns the rest of a collection
 }
 

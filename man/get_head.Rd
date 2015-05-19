@@ -6,6 +6,9 @@
 \usage{
 get_head(sequence)
 }
+\arguments{
+\item{sequence}{a sequence}
+}
 \description{
 Returns the first element of a collection.
 }

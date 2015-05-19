@@ -39,6 +39,8 @@ create_sequence_from_function <- function(fn) create_sequence(fn(), function(x) 
 next_value <- function(sequence) UseMethod("next_value")
 
 #' returns the next value of a lazy sequence
+#' @param sequence a sequence
+#' 
 #' @export
 next_value.transducer_sequence <- function(sequence) {
   current_head = attr(sequence, "current_head", exact = TRUE)
@@ -50,10 +52,14 @@ next_value.transducer_sequence <- function(sequence) {
 #' 
 #' I.e. the second value.
 #' 
+#' @param sequence a collection
+#' 
 #' @export
 next_value.list <- function(sequence) if (length(sequence) >= 2) sequence[[2]] else NULL
 
 #' Returns the rest of a collection
+#' 
+#' @param sequence a collection
 #' 
 #' That is everything except for the first item. 
 #' Returns NULL if no more items exist.
@@ -61,6 +67,8 @@ next_value.list <- function(sequence) if (length(sequence) >= 2) sequence[[2]] e
 rest <- function(sequence) UseMethod("rest")
 
 #' Returns the rest of a lazy sequence.
+#' 
+#' @param sequence a collection
 #' 
 #' @export
 rest.transducer_sequence <- function(sequence) {
@@ -74,6 +82,8 @@ rest.transducer_sequence <- function(sequence) {
 
 #' Returns the rest of a list
 #' 
+#' @param sequence a sequence
+#' 
 #' @export
 rest.list <- function(sequence) {
   if (length(sequence) <= 1) {
@@ -83,21 +93,26 @@ rest.list <- function(sequence) {
 }
 
 #' Returns the first element of a collection.
+#' @param sequence a sequence
 #' @export
 get_head <- function(sequence) UseMethod("get_head")
 
 #' Returns the first element of a lazy sequence.
+#' @param sequence a sequence
 #' @export
 get_head.transducer_sequence <- function(sequence) attr(sequence, "current_head", exact = TRUE)
 
 #' Returns the first element of a list
+#' @param sequence a list
 #' @export
 get_head.list <- function(sequence) sequence[[1]]
 
 #' Converts a collection to a list
+#' @param sequence a sequence
 #' @export
 to_list <- function(sequence) UseMethod("to_list")
 
 #' Converts a lazy sequence to a list
+#' @param sequence a list
 #' @export
 to_list.transducer_sequence <- function(sequence) reduce_sequence_eager(as_list, list(), sequence)

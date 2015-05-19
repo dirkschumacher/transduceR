@@ -6,6 +6,9 @@
 \usage{
 \method{get_head}{transducer_sequence}(sequence)
 }
+\arguments{
+\item{sequence}{a sequence}
+}
 \description{
 Returns the first element of a lazy sequence.
 }

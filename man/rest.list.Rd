@@ -6,6 +6,9 @@
 \usage{
 \method{rest}{list}(sequence)
 }
+\arguments{
+\item{sequence}{a sequence}
+}
 \description{
 Returns the rest of a list
 }
