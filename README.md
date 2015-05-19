@@ -1,11 +1,12 @@
 # transduceR
 [![Build Status](https://travis-ci.org/dirkschumacher/transduceR.png?branch=master)](https://travis-ci.org/dirkschumacher/transduceR)
+[![Coverage Status](https://coveralls.io/repos/dirkschumacher/transduceR/badge.svg)](https://coveralls.io/r/dirkschumacher/transduceR)
 
-A small package that implements Clojure's [transducers](http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming) in R. It also contains lazy sequences to work with infinite collection of items. 
+A small package that implements Clojure's [transducers](http://clojure.org/transducers) in R. It also contains lazy sequences to work with infinite collection of items. 
 
 Transducers let you define functions like map and filter decoupled from the underlying list datastructure. 
 
-This package is currently in a pre-alpha state (very limited documentation and tests) and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
+This package is currently in a pre-alpha state (very limited documentation and tests; R CMD CHECK fails) and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
 # Installation
 
@@ -18,8 +19,7 @@ devtools::install_github("dirkschumacher/transduceR")
 # Examples
 
 ## Transduce 
-Take the sum of the first 10 even numbers. Does not process the rest of the list.
-Transduce behaves almost like Reduce. However it also takes a transducer.
+Takes the sum of the first 10 even numbers but it does not iterate through the full list; < 0.2 sec on my old mac.
 
 ```R 
 transducer <- compose(filter(function(x) x %% 2 == 0), take(10))
@@ -27,10 +27,10 @@ col <- 1:100000000
 system.time(transduce(transducer, plus, col))
 ```
 
-The same as a sum.
+Compute the same but as a list.
 
 ```R 
-system.time(transduce(transducer, sum, col))
+system.time(transduce(transducer, as_list, col))
 ```
 
 ## Lazy sequences 

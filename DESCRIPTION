@@ -6,6 +6,6 @@ Date: 2015-05-03
 Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
 Description: Pre-Alpha of a transducer package
-License: MIT
+License: MIT + file LICENSE
 Suggests:
     testthat
