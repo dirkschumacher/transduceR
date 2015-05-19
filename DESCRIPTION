@@ -7,3 +7,5 @@ Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
 Description: Pre-Alpha of a transducer package
 License: MIT
+Suggests:
+    testthat
