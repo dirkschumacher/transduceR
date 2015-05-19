@@ -52,6 +52,14 @@ next_value(natural_numbers) # 1
 rest(natural_numbers) # create_sequence(1, function(x) x + 1)
 ```
 
+```R 
+# find a prime
+random_numbers <- create_sequence_from_function(function() floor(runif(1) * 10000)) 
+is_prime <- function(x) x == 2 || x %% 2:floor(sqrt(x)) # elegant formulation by flodel http://stackoverflow.com/a/19767707
+# returns 2 times the first prime number found
+result <- transduce(compose(contains(is_prime), map(function(x) x * 2)), plus, random_numbers)
+```
+
 ## Reuse transformations with different data structures
 ```R 
 transformation <- compose(filter(function(x) x %% 2 == 0), take(10))
@@ -64,4 +72,23 @@ transduce(transformation, plus, some_vector)
 transduce(transformation, plus, a_list)
 ```
 
+# API
+
+## Reducing functions
+
+* `transduce` takes a transducer, a step function and some collection and applies the transducers to it.
+
+
+## Transducers
+All functions return transducers.
+
+* `map` takes a functions and applies that function to each element. 
+* `filter` filters elements that satisfy a predicate (maybe rename?)
+* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. All other step functions will be applied to that element.
+* `take` stops the process after n elements
+* `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
+
+# Step functions
+* `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
+* `as_list` combines the resulting elements into a list
 
