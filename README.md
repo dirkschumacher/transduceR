@@ -84,7 +84,7 @@ All functions return transducers.
 
 * `map` takes a functions and applies that function to each element. 
 * `filter` filters elements that satisfy a predicate (maybe rename?)
-* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. All other step functions will be applied to that element.
+* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
 * `take` stops the process after n elements
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
 
