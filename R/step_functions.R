@@ -46,6 +46,33 @@ filter <- function(f) {
   }
 }
 
+#' contains
+#'
+#' Checks if an element is in the sequence or not.
+#' The process stopes when the element is contained in the sequence.
+#' 
+#' @param f a function that takes an input and returns TRUE or FALSE.
+#' @return A transducer that checks for a value using f.
+#'
+#' @export
+contains <- function(f) {
+  function(rf) {
+    function(result = NULL, input = NULL) {
+      if (is.null(result)) {
+        return(rf())
+      }
+      if (is.null(input)) {
+        return(rf(result))
+      }
+      if (f(input)) {
+        return(rf(reduced(rf(result, input))))
+      } else {
+        rf(result)
+      }
+    }
+  }
+}
+
 #' take
 #'
 #' Takes x number of items from a process.
@@ -138,3 +165,5 @@ plus <- function(acc = NULL, input = NULL) {
   }
   acc + input
 }
+
+
