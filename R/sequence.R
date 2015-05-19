@@ -100,4 +100,4 @@ to_list <- function(sequence) UseMethod("to_list")
 
 #' Converts a lazy sequence to a list
 #' @export
-to_list.transducer_sequence <- function(sequence) reduce_enum(as_list, list(), sequence)
+to_list.transducer_sequence <- function(sequence) reduce_sequence_eager(as_list, list(), sequence)
