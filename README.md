@@ -52,6 +52,14 @@ next_value(natural_numbers) # 1
 rest(natural_numbers) # create_sequence(1, function(x) x + 1)
 ```
 
+```R 
+# find a prime
+random_numbers <- create_sequence_from_function(function() floor(runif(1) * 10000)) 
+is_prime <- function(x) x == 2 || x %% 2:floor(sqrt(x)) # elegant formulation by flodel http://stackoverflow.com/a/19767707
+# returns 2 times the first prime number found
+result <- transduce(compose(contains(is_prime), map(function(x) x * 2)), plus, random_numbers)
+```
+
 ## Reuse transformations with different data structures
 ```R 
 transformation <- compose(filter(function(x) x %% 2 == 0), take(10))
