@@ -15,7 +15,7 @@ as_list <- function(acc = NULL, input = NULL) {
   if(is.null(input)) {
     return(acc)
   }
-  c(acc, input)
+  c(acc, list(input))
 }
 
 #' plus

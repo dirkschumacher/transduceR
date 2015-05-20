@@ -19,3 +19,10 @@ test_that("transducer works with no init value", {
   result <- transduce(transducer::map(function(x) x), plus, 1:3)
   expect_that(result, is_equivalent_to(sum(1:3)))
 })
+
+test_that("if map create multiple elements they are maintained by as_list", {
+  result <- transduce(map(function(x) c(-1, 1) * x), as_list, 1:2)
+  expect_that(length(result[[1]]), is_equivalent_to(2))
+  expect_that(length(result[[2]]), is_equivalent_to(2))
+})
+
