@@ -59,5 +59,5 @@ transduce <- function(transducer, step, collection, init = NULL) {
     i_val = fn()
   }
   reducing_function <- if(class(collection) == "transducer_sequence") reduce_sequence_eager else reduce
-  reducing_function(fn, init, collection)
+  reducing_function(fn, i_val, collection)
 }
