@@ -1,4 +1,4 @@
-context("transducer functions")
+context("flatten")
 
 test_that("flatten works with standard lists.", {
   nested_list <- list(1, 2:4, 5:6, 7)

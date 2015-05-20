@@ -1,4 +1,4 @@
-context("transducer functions")
+context("flatmap")
 
 test_that("flat map works with basic example.", {
   result <- transduce(flat_map(function(x) c(-1, 1) * x), plus, 1:5)

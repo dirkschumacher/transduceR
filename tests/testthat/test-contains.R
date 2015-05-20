@@ -1,4 +1,4 @@
-context("transducer functions")
+context("contains")
 
 test_that("contains stops when element is found.", {
   result <- transduce(contains(function(x) x == 10), plus, 

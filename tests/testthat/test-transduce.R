@@ -25,4 +25,3 @@ test_that("if map create multiple elements they are maintained by as_list", {
   expect_that(length(result[[1]]), is_equivalent_to(2))
   expect_that(length(result[[2]]), is_equivalent_to(2))
 })
-
