@@ -1,6 +1,6 @@
 # transduceR
 [![Build Status](https://travis-ci.org/dirkschumacher/transduceR.png?branch=master)](https://travis-ci.org/dirkschumacher/transduceR)
-[![Coverage Status](https://coveralls.io/repos/dirkschumacher/transduceR/badge.svg)](https://coveralls.io/r/dirkschumacher/transduceR)
+[![Coverage Status](https://coveralls.io/repos/dirkschumacher/transduceR/badge.svg?branch=master)](https://coveralls.io/r/dirkschumacher/transduceR?branch=master)
 
 A small package that implements Clojure's [transducers](http://clojure.org/transducers) in R. It also contains lazy sequences to work with infinite collection of items. 
 
@@ -84,7 +84,8 @@ All functions return transducers.
 
 * `map` takes a functions and applies that function to each element. 
 * `filter` filters elements that satisfy a predicate (maybe rename?)
-* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. All other step functions will be applied to that element.
+* `flatten` flattens a list/sequence
+* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
 * `take` stops the process after n elements
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
 
