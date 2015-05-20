@@ -169,3 +169,35 @@ take_while <- function(f) {
     }
   }
 }
+
+#' take
+#'
+#' Takes every nth element.
+#' 
+#' @param n indicates the what nth element.
+#' @return A transducer that takes every nth element
+#'
+#' @export
+take_nth <- function(n) {
+  if (n < 1) {
+    stop("n must be greater or equal to 1")
+  }
+  function(rf) {
+    result_counter <- 0
+    function(result = NULL, input = NULL) {
+      if (is.null(result)) {
+        return(rf())
+      }
+      if (is.null(input)) {
+        return(rf(result))
+      }
+      result_counter <<- result_counter + 1
+      if (result_counter == n) {
+        result_counter <<- 0
+        return(rf(result, input))
+      } else {
+        return(rf(result))
+      }
+    }
+  }
+}
