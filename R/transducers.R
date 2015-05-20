@@ -56,6 +56,17 @@ filter <- function(f) {
 #' @export
 discard <- function(f) filter(function(x) !f(x))
 
+
+#' flat_map
+#'
+#' Maps each elements to a new domain and flattens the result
+#' 
+#' @param f a function that takes an input and returns a value
+#' @return A transducer that maps a value and flattens the result.
+#'
+#' @export
+flat_map <- function(f) compose(map(f), flatten())
+
 #' flatten
 #' 
 #' Flattens a list or anything that works with length.
