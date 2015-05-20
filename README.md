@@ -88,6 +88,7 @@ All functions return transducers.
 * `flat_map` maps and then flattens the result
 * `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
 * `take` stops the process after n elements
+* `take_nth` takes every nth element
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
 
 # Step functions
