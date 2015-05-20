@@ -8,8 +8,8 @@
 #' @examples
 #' composition <- compose(
 #'    map(function(x) x + 1),
-#'    filter(function(x) x %% 3 == 0),
-#'    filter(function(x) x < 500),
+#'    keep(function(x) x %% 3 == 0),
+#'    keep(function(x) x < 500),
 #'    take(5)
 #'  )
 #' @export
