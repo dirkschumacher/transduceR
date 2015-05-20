@@ -46,6 +46,16 @@ filter <- function(f) {
   }
 }
 
+#' discard
+#'
+#' Removes elements where the predicate is TRUE.
+#' 
+#' @param f a function that takes an input and returns TRUE or FALSE.
+#' @return A transducer that discards a value using f.
+#'
+#' @export
+discard <- function(f) filter(function(x) !f(x))
+
 #' contains
 #'
 #' Checks if an element is in the sequence or not.
