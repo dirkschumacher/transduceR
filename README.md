@@ -91,7 +91,7 @@ All functions return transducers.
 * `take_nth` takes every nth element
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
 
-# Step functions
+## Step functions
 * `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
 * `as_list` combines the resulting elements into a list
 
