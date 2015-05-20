@@ -56,6 +56,29 @@ filter <- function(f) {
 #' @export
 discard <- function(f) filter(function(x) !f(x))
 
+#' flatten
+#' 
+#' Flattens a list or anything that works with length.
+#' 
+#' @export
+flatten <- function() {
+  function(rf) {
+    function(result = NULL, input = NULL) {
+      if (is.null(result)) {
+        return(rf())
+      } 
+      if (is.null(input)) {
+        return(rf(result))
+      }
+      tmp_result <- result
+      for (x in input) {
+        tmp_result <- rf(tmp_result, x)
+      }
+      return(tmp_result)
+    }
+  }
+}
+
 #' contains
 #'
 #' Checks if an element is in the sequence or not.
