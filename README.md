@@ -83,7 +83,7 @@ transduce(transformation, plus, a_list)
 All functions return transducers.
 
 * `map` takes a functions and applies that function to each element. 
-* `filter` filters elements that satisfy a predicate (maybe rename?)
+* `keep` filters elements that satisfy a predicate
 * `flatten` flattens a list/sequence
 * `flat_map` maps and then flattens the result
 * `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
