@@ -16,7 +16,7 @@ reduce <- function(f, init, collection) {
       return(f(acc))
     }
   }
-  return(f(acc))
+  f(acc)
 }
 
 reduce_sequence_eager <- function(f, init, collection) {
@@ -58,6 +58,9 @@ transduce <- function(transducer, step, collection, init = NULL) {
   if(is.null(i_val)) {
     i_val = fn()
   }
-  reducing_function <- if(class(collection) == "transducer_sequence") reduce_sequence_eager else reduce
+  reducing_function <- if (class(collection) == "transducer_sequence") 
+                        reduce_sequence_eager 
+                      else 
+                        reduce
   reducing_function(fn, i_val, collection)
 }
