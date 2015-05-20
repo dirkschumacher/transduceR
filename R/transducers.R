@@ -20,7 +20,7 @@ map <- function(f) {
   }
 }
 
-#' filter
+#' keep
 #'
 #' A filter transducer.
 #' 
@@ -28,7 +28,7 @@ map <- function(f) {
 #' @return A transducer that filters a value using f.
 #'
 #' @export
-filter <- function(f) {
+keep <- function(f) {
   function(rf) {
     function(result = NULL, input = NULL) {
       if (is.null(result)) {
@@ -54,7 +54,7 @@ filter <- function(f) {
 #' @return A transducer that discards a value using f.
 #'
 #' @export
-discard <- function(f) filter(function(x) !f(x))
+discard <- function(f) keep(function(x) !f(x))
 
 
 #' flat_map

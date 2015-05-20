@@ -22,7 +22,7 @@ devtools::install_github("dirkschumacher/transduceR")
 Takes the sum of the first 10 even numbers but it does not iterate through the full list; < 0.2 sec on my old mac.
 
 ```R 
-transducer <- compose(filter(function(x) x %% 2 == 0), take(10))
+transducer <- compose(keep(function(x) x %% 2 == 0), take(10))
 col <- 1:100000000
 system.time(transduce(transducer, plus, col))
 ```
@@ -37,7 +37,7 @@ system.time(transduce(transducer, as_list, col))
 
 ```R 
 natural_numbers <- create_sequence(0, function(x) x + 1) 
-first_5_even <- transduce(compose(filter(function(x) x %% 2 == 0), take(5)), as_list, natural_numbers)
+first_5_even <- transduce(compose(keep(function(x) x %% 2 == 0), take(5)), as_list, natural_numbers)
 ```
 
 ```R 
@@ -62,7 +62,7 @@ result <- transduce(compose(contains(is_prime), map(function(x) x * 2)), plus, r
 
 ## Reuse transformations with different data structures
 ```R 
-transformation <- compose(filter(function(x) x %% 2 == 0), take(10))
+transformation <- compose(keep(function(x) x %% 2 == 0), take(10))
 natural_numbers <- create_sequence(0, function(x) x + 1) 
 some_vector <- 1:10000
 a_list <- as.list(1:1000)
