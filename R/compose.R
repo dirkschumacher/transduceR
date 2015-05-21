@@ -16,6 +16,9 @@
 compose <- function(...) {
   # without tail call optimization this does not make sense I guess
   fns <- list(...)
+  if (length(fns) == 0) {
+    stop("please provide at least one function")
+  }
   compose_rec <- function(acc, f, fns) {
     combined_function <- function(...)acc(f(...))
     if (length(fns) == 0) {
