@@ -20,6 +20,22 @@ map <- function(f) {
   }
 }
 
+#' map_indexed
+#'
+#' A map transducer that keeps an index. It starts with 0.
+#' 
+#' @param f a function that takes an index and an input and returns a value
+#' @return A transducer that maps a value using f.
+#'
+#' @export
+map_indexed <- function(f) {
+  i <- -1
+  map(function(input) {
+    i <<- i + 1
+    f(i, input)
+  })
+}
+
 #' keep
 #'
 #' A filter transducer.

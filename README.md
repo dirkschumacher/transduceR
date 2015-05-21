@@ -82,11 +82,12 @@ transduce(transformation, plus, a_list)
 ## Transducers
 All functions return transducers.
 
-* `map` takes a functions and applies that function to each element. 
+* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
 * `keep` filters elements that satisfy a predicate
 * `flatten` flattens a list/sequence
 * `flat_map` maps and then flattens the result
-* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
+* `map` takes a functions and applies that function to each element. 
+* `map_indexed` map, but the first element is the index of the element.
 * `take` stops the process after n elements
 * `take_nth` takes every nth element
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
