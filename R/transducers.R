@@ -62,6 +62,24 @@ keep <- function(f) {
   }
 }
 
+#' random_sample
+#'
+#' Samples from the collection according to a probability.
+#' 
+#' @param prob a probability that an element is kept
+#' @param seed a seed, optional.
+#' @return A transducer that keeps elements according to a probability.
+#'
+#' @export
+random_sample <- function(prob, seed = NULL) {
+  if (prob < 0 || prob > 1) stop("prob should be between 0 and 1")
+  has_seed <- !is.null(seed)
+  keep(function(input) {
+    if (has_seed) set.seed(seed)
+    runif(1) <= prob
+  })
+}
+
 #' discard
 #'
 #' Removes elements where the predicate is TRUE.

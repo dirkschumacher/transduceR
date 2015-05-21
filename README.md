@@ -88,6 +88,7 @@ All functions return transducers.
 * `flat_map` maps and then flattens the result
 * `map` takes a functions and applies that function to each element. 
 * `map_indexed` map, but the first element is the index of the element.
+* `random_sample` randomly samples according to some success probability (supports a seed).
 * `take` stops the process after n elements
 * `take_nth` takes every nth element
 * `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
