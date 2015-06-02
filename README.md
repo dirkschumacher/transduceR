@@ -16,6 +16,37 @@ To install the current development version use devtools:
 devtools::install_github("dirkschumacher/transduceR")
 ```
 
+
+# API
+
+## Reducing functions
+
+* `transduce` takes a transducer, a step function and some collection and applies the transducers to it.
+
+
+## Transducers
+All functions return transducers.
+
+* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
+* `keep` filters elements that satisfy a predicate
+* `flatten` flattens a list/sequence
+* `flat_map` maps and then flattens the result
+* `map` takes a functions and applies that function to each element. 
+* `map_indexed` map, but the first element is the index of the element.
+* `random_sample` randomly samples according to some success probability (supports a seed).
+* `take` stops the process after n elements
+* `take_nth` takes every nth element
+* `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
+
+## Reduce functions
+* `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
+* `as_list` combines the resulting elements into a list
+
+
+# Inspiration
+Clearly this package has been inspired heavily by Clojure´s [transducers](http://clojure.org/transducers).
+
+
 # Examples
 
 ## Transduce 
@@ -71,33 +102,4 @@ transduce(transformation, plus, natural_numbers)
 transduce(transformation, plus, some_vector)
 transduce(transformation, plus, a_list)
 ```
-
-# API
-
-## Reducing functions
-
-* `transduce` takes a transducer, a step function and some collection and applies the transducers to it.
-
-
-## Transducers
-All functions return transducers.
-
-* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
-* `keep` filters elements that satisfy a predicate
-* `flatten` flattens a list/sequence
-* `flat_map` maps and then flattens the result
-* `map` takes a functions and applies that function to each element. 
-* `map_indexed` map, but the first element is the index of the element.
-* `random_sample` randomly samples according to some success probability (supports a seed).
-* `take` stops the process after n elements
-* `take_nth` takes every nth element
-* `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
-
-## Reduce functions
-* `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
-* `as_list` combines the resulting elements into a list
-
-
-# Inspiration
-Clearly this package has been inspired heavily by Clojure´s [transducers](http://clojure.org/transducers).
 
