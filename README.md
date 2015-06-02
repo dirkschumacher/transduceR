@@ -8,7 +8,7 @@ Transducers let you define functions like map and filter decoupled from the unde
 
 This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
-Current version: 0.1.0
+Current version: 0.2.0
 
 # Installation
 
@@ -22,8 +22,8 @@ devtools::install_github("dirkschumacher/transduceR")
 ```R 
 library(transducer)
 library(magrittr)
-keep(function(x) x %% 7 == 0) %then%
-  map(function(x) x + 1) %then%
+keep(function(x) x %% 7 == 0) %.%
+  map(function(x) x + 1) %.%
   take(2) %>%
   transduce(plus, 1:100)
 # > 23

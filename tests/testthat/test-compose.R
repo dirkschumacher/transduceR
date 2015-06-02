@@ -17,16 +17,16 @@ test_that("compose throws error when no arguments are supplied", {
 })
 
 test_that("compose operator evaluates from right to left", {
-  trans <- (function(x) x + 1) %then% 
-    (function(y) y * 2) %then% 
+  trans <- (function(x) x + 1) %.% 
+    (function(y) y * 2) %.% 
     (function(y) y + 5)
   expect_that(trans(5), is_equivalent_to(21))
 })
 
 test_that("compose operator integrates with magrittr pipe and transducer", {
   library(magrittr)
-  result <- map(function(x) x + 1) %then%
-      keep(function(x) x %% 7 == 0) %then%
+  result <- map(function(x) x + 1) %.%
+      keep(function(x) x %% 7 == 0) %.%
       take(5) %>%
       transduce(plus, 1:100)
   expect_that(result, is_equivalent_to(sum(c(7, 14, 21, 28, 35))))

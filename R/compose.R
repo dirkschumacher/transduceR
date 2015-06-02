@@ -44,7 +44,7 @@ compose <- function(...) {
 
 #' composition operator
 #'
-#' a %then% b translates into compose(a, b). 
+#' a %.% b translates into compose(a, b). 
 #' It should be used to design pipes based on transducers.
 #' 
 #' @param a a function that will be composed with function b.
@@ -52,10 +52,10 @@ compose <- function(...) {
 #' @return The composition of the functions.
 #'
 #' @examples
-#' composition <- map(function(x) x + 1) %then%
-#'    keep(function(x) x %% 3 == 0) %then%
-#'    keep(function(x) x < 500) %then%
+#' composition <- map(function(x) x + 1) %.%
+#'    keep(function(x) x %% 3 == 0) %.%
+#'    keep(function(x) x < 500) %.%
 #'    take(5)
-#' @rdname then
+#' @rdname compose_operator
 #' @export
-`%then%` <- function(a, b) compose(a, b)
+`%.%` <- function(a, b) compose(a, b)
