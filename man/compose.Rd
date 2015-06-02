@@ -14,6 +14,7 @@ The composition of the functions.
 }
 \description{
 Composes a number of functions.
+Evaluates functions from right to left.
 }
 \examples{
 composition <- compose(

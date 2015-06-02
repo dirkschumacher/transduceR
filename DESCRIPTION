@@ -1,11 +1,15 @@
 Package: transducer
 Type: Package
 Title: Implements transducers and other handy functions
-Version: 1.0
-Date: 2015-05-03
+Version: 0.1.0
+Date: 2015-06-02
 Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
-Description: Pre-Alpha of a transducer package
+Description: Alpha version of a transducer package
 License: MIT + file LICENSE
 Suggests:
-    testthat
+    testthat,
+    magrittr
+URL: https://github.com/dirkschumacher/transduceR
+BugReports: https://github.com/dirkschumacher/transduceR/issues
+ByteCompile: Yes

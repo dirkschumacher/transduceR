@@ -1,6 +1,7 @@
 #' compose
 #'
-#' Composes a number of functions.
+#' Composes a number of functions. 
+#' Evaluates functions from right to left.
 #' 
 #' @param ... functions that should be composed
 #' @return The composition of the functions.
@@ -40,3 +41,21 @@ compose <- function(...) {
   }
   compose_rec(NULL, fns[[1]], fns[-1])
 }
+
+#' composition operator
+#'
+#' a %then% b translates into compose(a, b). 
+#' It should be used to design pipes based on transducers.
+#' 
+#' @param a a function that will be composed with function b.
+#' @param b a function that takes the result of function b.
+#' @return The composition of the functions.
+#'
+#' @examples
+#' composition <- map(function(x) x + 1) %then%
+#'    keep(function(x) x %% 3 == 0) %then%
+#'    keep(function(x) x < 500) %then%
+#'    take(5)
+#' @rdname then
+#' @export
+`%then%` <- function(a, b) compose(a, b)
