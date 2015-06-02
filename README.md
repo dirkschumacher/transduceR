@@ -42,11 +42,6 @@ All functions return transducers.
 * `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
 * `as_list` combines the resulting elements into a list
 
-
-# Inspiration
-Clearly this package has been inspired heavily by Clojure´s [transducers](http://clojure.org/transducers).
-
-
 # Examples
 
 ## Transduce 
@@ -102,4 +97,9 @@ transduce(transformation, plus, natural_numbers)
 transduce(transformation, plus, some_vector)
 transduce(transformation, plus, a_list)
 ```
+
+
+# Inspiration
+Clearly this package has been inspired heavily by Clojure´s [transducers](http://clojure.org/transducers).
+
 
