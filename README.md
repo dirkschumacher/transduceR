@@ -27,6 +27,17 @@ keep(function(x) x %% 7 == 0) %.%
   take(2) %>%
   transduce(plus, 1:100)
 # > 23
+
+map(function(x) x %% 7) %.%
+  distinct() %.%
+  take(2) %>%
+  transduce(as_list, 1:100)
+  
+# > [[1]]
+# > [1] 1
+# > 
+# > [[2]]
+# > [1] 2
 ```
 
 # API
