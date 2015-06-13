@@ -8,7 +8,7 @@ Transducers let you define functions like map and filter decoupled from the unde
 
 This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
-Current version: 0.2.0
+Current version: 0.3.0
 
 # Installation
 
