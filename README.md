@@ -1,4 +1,4 @@
-# transduceR
+# Functional programming in R
 [![Build Status](https://travis-ci.org/dirkschumacher/transduceR.png?branch=master)](https://travis-ci.org/dirkschumacher/transduceR)
 [![Coverage Status](https://coveralls.io/repos/dirkschumacher/transduceR/badge.svg?branch=master)](https://coveralls.io/r/dirkschumacher/transduceR?branch=master)
 
