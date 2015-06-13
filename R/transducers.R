@@ -42,8 +42,8 @@ map_indexed <- function(f) {
 #' 
 #' @param f a function that takes an input and returns TRUE or FALSE.
 #' @return A transducer that filters a value using f.
-#'
 #' @export
+#'
 keep <- function(f) {
   function(rf) {
     function(result = NULL, input = NULL) {
@@ -90,6 +90,34 @@ random_sample <- function(prob, seed = NULL) {
 #' @export
 discard <- function(f) keep(function(x) !f(x))
 
+
+#' distinct
+#'
+#' Removes duplicate elements. Run linear in terms of distinct elements in the sequence.
+#' 
+#' @return A transducer that filters out duplicate elements.
+#'
+#' @export
+distinct <- function() {
+  # not very fast but ok for now => move to hashset (env or something)
+  seen_objects <- list()
+  function(rf) {
+    function(result = NULL, input = NULL) {
+      if (is.null(result)) {
+        return(rf())
+      }
+      if (is.null(input)) {
+        return(rf(result))
+      }
+      if (input %in% seen_objects) {
+        rf(result)
+      } else {
+        seen_objects <<- c(seen_objects, input)
+        rf(result, input)
+      }
+    }
+  }
+}
 
 #' flat_map
 #'

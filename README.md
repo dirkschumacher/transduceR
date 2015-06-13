@@ -40,6 +40,8 @@ keep(function(x) x %% 7 == 0) %.%
 All functions return transducers.
 
 * `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
+* `discard` filters out elements that satisfy the predicate
+* `distinct` filters outs duplicate elements
 * `keep` filters elements that satisfy a predicate
 * `flatten` flattens a list/sequence
 * `flat_map` maps and then flattens the result

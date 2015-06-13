@@ -1,11 +1,11 @@
 Package: transducer
 Type: Package
-Title: Implements transducers and other handy functions
-Version: 0.2.0
-Date: 2015-06-02
+Title: Functional programming in R
+Version: 0.3.0
+Date: 2015-06-13
 Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
-Description: Alpha version of a transducer package
+Description: Functional programming in R using transducers
 License: MIT + file LICENSE
 Suggests:
     testthat,
