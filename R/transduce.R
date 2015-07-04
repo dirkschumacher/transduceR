@@ -52,12 +52,14 @@ reduce_sequence_eager <- function(f, init, collection) {
 #' @return The result of the reduction piped through the transducer.
 #'
 #' @export
-transduce <- function(transducer, step, collection, init = NULL) {
+transduce <- function(transducer, step, collection, init) {
   fn <- transducer(step)
-  i_val = init
-  if(is.null(i_val)) {
+  if(missing(init)) {
     i_val = fn()
+  } else {
+    i_val <- init
   }
+  
   reducing_function <- if (class(collection) == "transducer_sequence") 
                         reduce_sequence_eager 
                       else 

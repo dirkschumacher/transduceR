@@ -8,11 +8,11 @@
 #' @return A step function that yields a list
 #'
 #' @export
-as_list <- function(acc = NULL, input = NULL) {
-  if (is.null(acc) & is.null(input)) {
+as_list <- function(acc, input) {
+  if (missing(acc) & missing(input)) {
     return(list())
   }
-  if(is.null(input)) {
+  if(missing(input)) {
     return(acc)
   }
   c(acc, list(input))
@@ -28,11 +28,11 @@ as_list <- function(acc = NULL, input = NULL) {
 #' @return A step function that yields a sum
 #'
 #' @export
-plus <- function(acc = NULL, input = NULL) {
-  if (is.null(acc) & is.null(input)) {
+plus <- function(acc, input) {
+  if (missing(acc) & missing(input)) {
     return(0)
   }
-  if(is.null(input)) {
+  if(missing(input)) {
     return(acc)
   }
   acc + input

@@ -8,11 +8,11 @@
 #' @export
 map <- function(f) {
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       rf(result, f(input))
@@ -46,11 +46,11 @@ map_indexed <- function(f) {
 #'
 keep <- function(f) {
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       if (f(input)) {
@@ -71,9 +71,9 @@ keep <- function(f) {
 #' @return A transducer that keeps elements according to a probability.
 #'
 #' @export
-random_sample <- function(prob, seed = NULL) {
+random_sample <- function(prob, seed ) {
   if (prob < 0 || prob > 1) stop("prob should be between 0 and 1")
-  has_seed <- !is.null(seed)
+  has_seed <- !missing(seed)
   keep(function(input) {
     if (has_seed) set.seed(seed)
     runif(1) <= prob
@@ -102,11 +102,11 @@ distinct <- function() {
   # not very fast but ok for now => move to hashset (env or something)
   seen_objects <- list()
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       if (input %in% seen_objects) {
@@ -136,11 +136,11 @@ flat_map <- function(f) compose(map(f), flatten())
 #' @export
 flatten <- function() {
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       } 
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       tmp_result <- result
@@ -163,11 +163,11 @@ flatten <- function() {
 #' @export
 contains <- function(f) {
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       if (f(input)) {
@@ -190,11 +190,11 @@ contains <- function(f) {
 take <- function(number_of_results) {
   function(rf) {
     result_counter <- 0
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       if (result_counter < number_of_results) {
@@ -217,11 +217,11 @@ take <- function(number_of_results) {
 #' @export
 take_while <- function(f) {
   function(rf) {
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       if (f(input)) {
@@ -246,11 +246,11 @@ take_nth <- function(n) {
   }
   function(rf) {
     result_counter <- 0
-    function(result = NULL, input = NULL) {
-      if (is.null(result)) {
+    function(result , input ) {
+      if (missing(result)) {
         return(rf())
       }
-      if (is.null(input)) {
+      if (missing(input)) {
         return(rf(result))
       }
       result_counter <<- result_counter + 1
