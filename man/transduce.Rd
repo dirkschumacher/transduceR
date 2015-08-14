@@ -4,7 +4,7 @@
 \alias{transduce}
 \title{Transduce}
 \usage{
-transduce(transducer, step, collection, init = NULL)
+transduce(transducer, step, collection, init)
 }
 \arguments{
 \item{transducer}{a transducer.}

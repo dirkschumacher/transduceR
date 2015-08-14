@@ -4,7 +4,7 @@
 \alias{as_list}
 \title{as_list}
 \usage{
-as_list(acc = NULL, input = NULL)
+as_list(acc, input)
 }
 \arguments{
 \item{acc}{the accumulater, can be empty}

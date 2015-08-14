@@ -4,7 +4,7 @@
 \alias{plus}
 \title{plus}
 \usage{
-plus(acc = NULL, input = NULL)
+plus(acc, input)
 }
 \arguments{
 \item{acc}{the accumulater, can be empty}

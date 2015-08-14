@@ -4,7 +4,7 @@
 \alias{random_sample}
 \title{random_sample}
 \usage{
-random_sample(prob, seed = NULL)
+random_sample(prob, seed)
 }
 \arguments{
 \item{prob}{a probability that an element is kept}
