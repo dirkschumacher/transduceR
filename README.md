@@ -8,7 +8,7 @@ Transducers let you define functions like map and filter decoupled from the unde
 
 This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
-Current version: 0.3.1
+Current version: 0.4.1
 
 # Installation
 
@@ -66,6 +66,7 @@ All functions return transducers.
 ## Step functions
 * `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
 * `as_list` combines the resulting elements into a list
+* `as_vector` combines the resulting elements into a vector
 
 # Examples
 
