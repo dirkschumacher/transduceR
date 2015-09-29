@@ -74,7 +74,7 @@ All functions return transducers.
 Takes the sum of the first 10 even numbers but it does not iterate through the full list; < 0.2 sec on my old mac.
 
 ```R 
-transducer <- compose(keep(function(x) x %% 2 == 0), take(10))
+transducer <- keep(function(x) x %% 2 == 0) %.% take(10)
 col <- 1:100000000
 system.time(transduce(transducer, plus, col))
 ```
