@@ -38,4 +38,23 @@ plus <- function(acc, input) {
   acc + input
 }
 
+#' as_vector
+#'
+#' Accumulates values to a vector by appending results
+#' 
+#' @param acc the accumulater, can be empty
+#' @param input the input, can be empty
+#' @return A step function that yields a vector
+#'
+#' @export
+as_vector <- function(acc, input) {
+  if (missing(acc) & missing(input)) {
+    return(c())
+  }
+  if(missing(input)) {
+    return(acc)
+  }
+  c(acc, input)
+}
+
 
