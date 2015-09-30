@@ -10,6 +10,6 @@ test_that("take-nth throws error if n < 1.", {
 })
 
 test_that("take-while works with basic example.", {
-  result <- transduce(take_while(function(x) x < 5), sum, 1:20)
+  result <- transduce(take_while(function(x) x < 5), as_sum, 1:20)
   expect_that(result, is_equivalent_to(sum(1:4)))
 })

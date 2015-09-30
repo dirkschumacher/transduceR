@@ -28,6 +28,6 @@ test_that("compose operator integrates with magrittr pipe and transducer", {
   result <- map(function(x) x + 1) %.%
       keep(function(x) x %% 7 == 0) %.%
       take(5) %>%
-      transduce(plus, 1:100)
+      transduce(as_sum, 1:100)
   expect_that(result, is_equivalent_to(sum(c(7, 14, 21, 28, 35))))
 })

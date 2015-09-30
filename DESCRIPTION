@@ -1,7 +1,7 @@
 Package: transducer
 Type: Package
 Title: Functional programming in R
-Version: 0.4.1
+Version: 0.5.0
 Date: 2015-07-04
 Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>

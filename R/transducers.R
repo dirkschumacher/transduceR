@@ -7,15 +7,15 @@
 #'
 #' @export
 map <- function(f) {
-  function(rf) {
-    function(result , input ) {
+  function(tf) {
+    function(result, input) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
-      rf(result, f(input))
+      tf(result, f(input))
     }
   }
 }
@@ -45,18 +45,18 @@ map_indexed <- function(f) {
 #' @export
 #'
 keep <- function(f) {
-  function(rf) {
-    function(result , input ) {
+  function(tf) {
+    function(result, input) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       if (f(input)) {
-        return(rf(result, input))
+        return(tf(result, input))
       } else {
-        rf(result)
+        tf(result)
       }
     }
   }
@@ -101,19 +101,19 @@ discard <- function(f) keep(function(x) !f(x))
 distinct <- function() {
   # not very fast but ok for now => move to hashset (env or something)
   seen_objects <- list()
-  function(rf) {
-    function(result , input ) {
+  function(tf) {
+    function(result, input) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       if (input %in% seen_objects) {
-        rf(result)
+        tf(result)
       } else {
         seen_objects <<- c(seen_objects, input)
-        rf(result, input)
+        tf(result, input)
       }
     }
   }
@@ -135,17 +135,17 @@ flat_map <- function(f) compose(map(f), flatten())
 #' 
 #' @export
 flatten <- function() {
-  function(rf) {
+  function(tf) {
     function(result , input ) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       } 
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       tmp_result <- result
       for (x in input) {
-        tmp_result <- rf(tmp_result, x)
+        tmp_result <- tf(tmp_result, x)
       }
       return(tmp_result)
     }
@@ -162,18 +162,18 @@ flatten <- function() {
 #'
 #' @export
 contains <- function(f) {
-  function(rf) {
+  function(tf) {
     function(result , input ) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       if (f(input)) {
-        return(rf(reduced(rf(result, input))))
+        return(tf(reduced(tf(result, input))))
       } else {
-        rf(result)
+        tf(result)
       }
     }
   }
@@ -188,20 +188,20 @@ contains <- function(f) {
 #'
 #' @export
 take <- function(number_of_results) {
-  function(rf) {
+  function(tf) {
     result_counter <- 0
     function(result , input ) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       if (result_counter < number_of_results) {
         result_counter <<- result_counter + 1
-        return(rf(result, input))
+        return(tf(result, input))
       } else {
-        return(rf(reduced(result)))
+        return(tf(reduced(result)))
       }
     }
   }
@@ -216,18 +216,18 @@ take <- function(number_of_results) {
 #'
 #' @export
 take_while <- function(f) {
-  function(rf) {
+  function(tf) {
     function(result , input ) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       if (f(input)) {
-        return(rf(result, input))
+        return(tf(result, input))
       } 
-      return(rf(reduced(result)))
+      return(tf(reduced(result)))
     }
   }
 }
@@ -244,21 +244,21 @@ take_nth <- function(n) {
   if (n < 1) {
     stop("n must be greater or equal to 1")
   }
-  function(rf) {
+  function(tf) {
     result_counter <- 0
     function(result , input ) {
       if (missing(result)) {
-        return(rf())
+        return(tf())
       }
       if (missing(input)) {
-        return(rf(result))
+        return(tf(result))
       }
       result_counter <<- result_counter + 1
       if (result_counter == n) {
         result_counter <<- 0
-        return(rf(result, input))
+        return(tf(result, input))
       } else {
-        return(rf(result))
+        return(tf(result))
       }
     }
   }

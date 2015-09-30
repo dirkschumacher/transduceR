@@ -23,12 +23,29 @@ as_list <- function(acc, input) {
 #' A normal reduction step function that sums over all items.
 #' It also supports arity 0 and 1.
 #' 
+#' Deprecated.
+#' 
 #' @param acc the accumulater, can be empty
 #' @param input the input, can be empty
 #' @return A step function that yields a sum
 #'
 #' @export
 plus <- function(acc, input) {
+  warning("plus is deprecated. Please use as_sum.")
+  as_sum(acc, input)
+}
+
+#' as_sum
+#'
+#' A normal reduction step function that sums over all items.
+#' It also supports arity 0 and 1.
+#' 
+#' @param acc the accumulater, can be empty
+#' @param input the input, can be empty
+#' @return A step function that yields a sum
+#'
+#' @export
+as_sum <- function(acc, input) {
   if (missing(acc) & missing(input)) {
     return(0)
   }

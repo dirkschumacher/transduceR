@@ -6,11 +6,27 @@ reduced <- function(x) {
   structure(x, transducer_reduced = TRUE)
 }
 
-reduce <- function(f, init, collection) {
+is_table <- function(x) {
+  is.matrix(x) | is.data.frame(x)
+}
+
+reduce <- function(f, init, collection, margin = "columns") {
   # no tail call optimization -> loop
   acc <- init
-  for(i in 1:length(collection)) {
-    acc <- f(acc, collection[[i]])
+  size_function <- length
+  access_function <- `[[`
+  if (is_table(collection)) {
+    if (margin == "rows") {
+      size_function <- nrow
+      access_function <- function(tbl, row_idx) {
+        tbl[row_idx, ]
+      }
+    } else {
+      size_function <- ncol
+    }
+  }
+  for(i in 1:size_function(collection)) {
+    acc <- f(acc, access_function(collection, i))
     if(is_reduced(acc)) {
       attributes(acc) <- NULL
       return(f(acc))
@@ -65,4 +81,26 @@ transduce <- function(transducer, step, collection, init) {
                       else 
                         reduce
   reducing_function(fn, i_val, collection)
+}
+
+#' Transduce_tbl
+#'
+#' Similiar to the normal transduce function but it explicitly only works for
+#' data.frames or matrices. It has an additional parameter that indicates if
+#' it should be iterated over columns or rows.
+#' By default it iterates over the rows starting with the first row.
+#' 
+#' @param transducer a transducer.
+#' @param step an step function.
+#' @param collection a collection or a sequence.
+#' @param margin indicates wether to iterate over "rows" or "columns". Default value is "rows".
+#' @param init an initial value. If ommitted the step function will be called to generate a value without an argument.
+#' @return The result of the reduction piped through the transducer.
+#'
+#' @export
+transduce_tbl <- function(transducer, step, tbl, margin = "rows", 
+                          init = transducer(step)()) {
+  stopifnot(is_table(tbl))
+  stopifnot(margin %in% c("rows", "columns"))
+  reduce(transducer(step), init, tbl, margin)
 }

@@ -15,8 +15,8 @@ test_that("random_sample only accepts probabilities", {
 
 test_that("random_sample accepts a seed", {
   # not very good, maybe have a good stat. test 
-  result1 <- transduce(random_sample(0.3, 10), plus, 1:1000)
-  result2 <- transduce(random_sample(0.3, 10), plus, 1:1000)
+  result1 <- transduce(random_sample(0.3, 10), as_sum, 1:1000)
+  result2 <- transduce(random_sample(0.3, 10), as_sum, 1:1000)
   expect_that(result1, is_equivalent_to(result2))
 })
 

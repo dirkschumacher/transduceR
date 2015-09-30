@@ -8,7 +8,7 @@ Transducers let you define functions like map and filter decoupled from the unde
 
 This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
 
-Current version: 0.4.1
+Current version: 0.5.0
 
 # Installation
 
@@ -26,18 +26,23 @@ keep(function(x) x %% 7 == 0) %.%
   map(function(x) x + 1) %.%
   take(2) %>%
   transduce(plus, 1:100)
-# > 23
+# 23
 
 map(function(x) x %% 7) %.%
   distinct() %.%
   take(2) %>%
   transduce(as_list, 1:100)
   
-# > [[1]]
-# > [1] 1
-# > 
-# > [[2]]
-# > [1] 2
+# [[1]]
+# [1] 1
+#  
+# [[2]]
+# [1] 2
+
+map(function(x) round(x$cyl)) %.%
+  distinct() %>%
+  transduce_tbl(as_vector, mtcars)
+# [1] 6 4 8
 ```
 
 # API
@@ -45,12 +50,12 @@ map(function(x) x %% 7) %.%
 ## Reducing functions
 
 * `transduce` takes a transducer, a step function and some collection and applies the transducers to it.
-
+* `transduce_tbl` takes a transducer, a step function and a data.frame and applies the transducer to either to each column or each row.
 
 ## Transducers
 All functions return transducers.
 
-* `contains`takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
+* `contains` takes a predicate and terminates the process if the predicate returns `TRUE`. See prime number example.
 * `discard` filters out elements that satisfy the predicate
 * `distinct` filters outs duplicate elements
 * `keep` filters elements that satisfy a predicate
@@ -61,10 +66,10 @@ All functions return transducers.
 * `random_sample` randomly samples according to some success probability (supports a seed).
 * `take` stops the process after n elements
 * `take_nth` takes every nth element
-* `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`. 
+* `take_while` takes the predicate and stops the process when the predicate evaluates to `FALSE`.
 
 ## Step functions
-* `plus` a normal `+` operation. However it accepts 1 and 0 arguments.
+* `as_sum` a normal `+` operation. However it accepts 1 and 0 arguments.
 * `as_list` combines the resulting elements into a list
 * `as_vector` combines the resulting elements into a vector
 
@@ -107,7 +112,7 @@ rest(natural_numbers) # create_sequence(1, function(x) x + 1)
 ```R 
 # find a prime
 random_numbers <- create_sequence_from_function(function() floor(runif(1) * 10000)) 
-is_prime <- function(x) x == 2 || x %% 2:floor(sqrt(x)) # elegant formulation by flodel http://stackoverflow.com/a/19767707
+is_prime <- function(x) x == 2 || x %% 2:floor(sqrt(x)) # elegant formulation by flodel (http://stackoverflow.com/users/1201032/flodel) http://stackoverflow.com/a/19767707
 # returns 2 times the first prime number found
 result <- transduce(compose(contains(is_prime), map(function(x) x * 2)), plus, random_numbers)
 ```
