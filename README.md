@@ -39,7 +39,7 @@ map(function(x) x %% 7) %.%
 # [[2]]
 # [1] 2
 
-map(function(x) round(x$cyl)) %.%
+map(function(x) x$cyl) %.%
   distinct() %>%
   transduce_tbl(as_vector, mtcars)
 # [1] 6 4 8
