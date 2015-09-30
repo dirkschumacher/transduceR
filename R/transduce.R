@@ -62,7 +62,7 @@ reduce_sequence_eager <- function(f, init, collection) {
 #' More documentation will follow. Api not stable yet.
 #' 
 #' @param transducer a transducer.
-#' @param step an step function.
+#' @param step a step function.
 #' @param collection a collection or a sequence.
 #' @param init an initial value. If ommitted the step function will be called to generate a value without an argument.
 #' @return The result of the reduction piped through the transducer.
@@ -91,8 +91,8 @@ transduce <- function(transducer, step, collection, init) {
 #' By default it iterates over the rows starting with the first row.
 #' 
 #' @param transducer a transducer.
-#' @param step an step function.
-#' @param collection a collection or a sequence.
+#' @param step a step function.
+#' @param tbl a table (matrix or data.frame).
 #' @param margin indicates wether to iterate over "rows" or "columns". Default value is "rows".
 #' @param init an initial value. If ommitted the step function will be called to generate a value without an argument.
 #' @return The result of the reduction piped through the transducer.

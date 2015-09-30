@@ -12,11 +12,11 @@ transduce_tbl(transducer, step, tbl, margin = "rows",
 
 \item{step}{an step function.}
 
+\item{tbl}{a table.}
+
 \item{margin}{indicates wether to iterate over "rows" or "columns". Default value is "rows".}
 
 \item{init}{an initial value. If ommitted the step function will be called to generate a value without an argument.}
-
-\item{collection}{a collection or a sequence.}
 }
 \value{
 The result of the reduction piped through the transducer.
