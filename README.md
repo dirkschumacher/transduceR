@@ -25,7 +25,7 @@ library(magrittr)
 keep(function(x) x %% 7 == 0) %.%
   map(function(x) x + 1) %.%
   take(2) %>%
-  transduce(plus, 1:100)
+  transduce(as_sum, 1:100)
 # 23
 
 map(function(x) x %% 7) %.%
