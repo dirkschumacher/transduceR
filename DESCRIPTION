@@ -1,15 +1,18 @@
 Package: transducer
 Type: Package
 Title: Functional programming in R
-Version: 0.5.0
+Version: 0.6.0
 Date: 2015-07-04
 Author: Dirk Schumacher
 Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
 Description: Functional programming in R using transducers
 License: MIT + file LICENSE
+Imports:
+    iterators
 Suggests:
     testthat,
     magrittr
 URL: https://github.com/dirkschumacher/transduceR
 BugReports: https://github.com/dirkschumacher/transduceR/issues
 ByteCompile: Yes
+RoxygenNote: 5.0.1

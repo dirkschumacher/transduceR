@@ -6,9 +6,9 @@ A small package that implements Clojure's [transducers](http://clojure.org/trans
 
 Transducers let you define functions like map and filter decoupled from the underlying list datastructure. 
 
-This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a package out of it.
+This package is currently in an alpha state and feedback is very welcome. Also the public API is far from ready and probably not optimal. I initially implemented it as an exercise but it might make sense to create a stable package out of it (in the future ;)).
 
-Current version: 0.5.0
+Current version: 0.6.0
 
 # Installation
 
@@ -43,6 +43,11 @@ map(function(x) x$cyl) %.%
   distinct() %>%
   transduce_tbl(as_vector, mtcars)
 # [1] 6 4 8
+
+set.seed(2)
+filter(function(x) x < 5) %.%
+  take(3) %>%
+  transduce(as_vector, iterators::irpois(lambda = 5, 10))
 ```
 
 # API

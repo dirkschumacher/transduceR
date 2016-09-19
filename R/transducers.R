@@ -76,7 +76,7 @@ random_sample <- function(prob, seed ) {
   has_seed <- !missing(seed)
   keep(function(input) {
     if (has_seed) set.seed(seed)
-    runif(1) <= prob
+    stats::runif(1) <= prob
   })
 }
 

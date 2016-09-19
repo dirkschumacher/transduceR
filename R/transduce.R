@@ -35,12 +35,15 @@ reduce <- function(f, init, collection, margin = "columns") {
   f(acc)
 }
 
-reduce_sequence_eager <- function(f, init, collection) {
+reduce_sequence_lazy <- function(f, init, collection, 
+                                  head_fun = get_head, 
+                                  replace_sequence = TRUE) {
   # no tail call optimization -> loop
   acc <- init
   current_sequence <- collection
   while(TRUE) {
-    current_head <- get_head(current_sequence)
+    current_head <- tryCatch(head_fun(current_sequence), 
+                             error = function(e) NULL)
     if (is.null(current_head)) {
       break
     }
@@ -49,7 +52,9 @@ reduce_sequence_eager <- function(f, init, collection) {
       attributes(acc) <- NULL
       return(f(acc))
     }
-    current_sequence <- rest(current_sequence)
+    if (replace_sequence) {
+      current_sequence <- rest(current_sequence)  
+    }
   }
   f(acc)
 }
@@ -76,10 +81,18 @@ transduce <- function(transducer, step, collection, init) {
     i_val <- init
   }
   
-  reducing_function <- if (class(collection) == "transducer_sequence") 
-                        reduce_sequence_eager 
-                      else 
-                        reduce
+  collection_class <- class(collection)
+  reducing_function <- if ("transducer_sequence" %in% collection_class) {
+    reduce_sequence_lazy
+  } else if ("iter" %in% collection_class) {
+    function(f, init, collection) {
+      reduce_sequence_lazy(f, init, collection, 
+                           iterators::nextElem, FALSE)
+    } 
+  } else {
+    reduce
+  }
+    
   reducing_function(fn, i_val, collection)
 }
 
