@@ -8,10 +8,11 @@ Maintainer: Dirk Schumacher <mail@dirk-schumacher.net>
 Description: Functional programming in R using transducers
 License: MIT + file LICENSE
 Imports:
-  iterators
+    iterators
 Suggests:
-  testthat,
-  magrittr
+    testthat,
+    magrittr
 URL: https://github.com/dirkschumacher/transduceR
 BugReports: https://github.com/dirkschumacher/transduceR/issues
 ByteCompile: Yes
+RoxygenNote: 5.0.1
